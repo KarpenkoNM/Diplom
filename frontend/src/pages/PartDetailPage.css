@@ -1,0 +1,239 @@
+/* frontend/src/pages/PartDetailPage.css */
+
+.part-card {
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  
+  .part-image-wrapper {
+    width: 100%;
+    max-width: 500px;
+    height: 300px;
+    margin: 20px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background: transparent;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.4);
+  }
+
+  /* Стили самого слайдера – растягиваем всё до 100% родителя */
+  .part-image-wrapper .slick-slider,
+  .part-image-wrapper .slick-list,
+  .part-image-wrapper .slick-track,
+  .part-image-wrapper .slick-slide,
+  .part-image-wrapper .slick-slide > div {
+    min-width: 100%;
+    min-height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Центруем картинки внутри слайдов */
+  .part-image-wrapper .slick-slide img {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  
+  /* Точки индикатора */
+  .slick-dots li button:before {
+    color: var(--text-color);
+  }
+  
+  .part-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  
+  /* Слайдер */
+  .slick-slide img {
+    display: block;
+    margin: 0 auto;
+  }
+  
+  .slick-dots li button:before {
+    color: var(--text-color);
+  }
+  
+  @media (max-width: 768px) {
+    .part-image-wrapper {
+      max-width: 300px;
+      height: 200px;
+    }
+  }
+
+  /* В темной теме поля ввода */
+body.dark-theme input,
+body.dark-theme textarea,
+body.dark-theme .form-control {
+  background-color: #1f1f1f !important;
+  color: #ffffff !important;
+  border: 1px solid #444 !important;
+}
+
+/* Плейсхолдер (текст подсказки внутри input) */
+body.dark-theme input::placeholder,
+body.dark-theme textarea::placeholder,
+body.dark-theme .form-control::placeholder {
+  color: #aaa; /* Светло-серый текст подсказки */
+}
+
+/* Фокус на инпуте — убрать синюю рамку */
+body.dark-theme input:focus,
+body.dark-theme textarea:focus,
+body.dark-theme .form-control:focus {
+  background-color: #1f1f1f;
+  color: #ffffff;
+  border-color: #666;
+  box-shadow: none; /* убрать синее свечение */
+}
+
+/* Стили для комментариев в темной теме */
+body.dark-theme .list-group-item {
+    background-color: #1f1f1f !important;
+    color: #fff !important;
+    border-color: #333 !important;
+}
+
+.comment-item {
+  animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.replies {
+  margin-top: 10px;
+  padding-left: 20px;
+  border-left: 2px solid #555;
+}
+
+.reply-item {
+  margin-top: 10px;
+  background-color: #1a1a1a;
+  padding: 10px;
+  border-radius: 6px;
+  animation: fadeIn 0.5s ease-in;
+}
+
+/* Тёмная тема для комментариев */
+body.dark-theme .list-group-item {
+  background-color: #1f1f1f !important;
+  color: #fff !important;
+  border-color: #333 !important;
+}
+
+.favorite-button {
+  margin-top: 15px;
+  text-align: left;
+}
+
+.favorite {
+  font-size: 18px;
+  width: 180px;
+  text-align: center;
+  justify-content: center;
+  white-space: nowrap;
+  transition: all 0.3s ease;
+  overflow: hidden;
+  background-color: transparent;
+  border: 1px solid #212529; /* Чёрная рамка по умолчанию */
+  color: #212529; /* Чёрный текст */
+}
+
+.favorite.active {
+  color: #ff4d4f;
+  transform: scale(1.1);
+  animation: boom 0.4s ease forwards;
+  border-color: #ff4d4f;
+}
+
+body.dark-theme .favorite {
+  border: 1px solid #ccc;
+  color: #ccc;
+}
+
+body.dark-theme .favorite.active {
+  border: 1px solid #ff4d4f;
+  color: #ff4d4f;
+}
+
+@keyframes boom {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.4); }
+  100% { transform: scale(1.1); }
+}
+
+/* Кнопки лайков и ответов */
+.comment-item button,
+.reply-item button {
+  color: #212529; /* Чёрный цвет в светлой теме */
+  border: 1px solid #212529;
+  background-color: transparent;
+  transition: all 0.3s ease;
+}
+
+.comment-item button:hover,
+.reply-item button:hover {
+  background-color: #f0f0f0;
+}
+
+body.dark-theme .comment-item button,
+body.dark-theme .reply-item button {
+  color: #ccc;
+  border: 1px solid #ccc;
+}
+
+body.dark-theme .comment-item button:hover,
+body.dark-theme .reply-item button:hover {
+  background-color: #333;
+}
+
+/* Комментарии */
+.comment-item {
+  animation: fadeIn 0.5s ease-in;
+  background-color: #f9f9f9;
+  color: #000;
+}
+
+body.dark-theme .comment-item {
+  background-color: #1f1f1f;
+  color: #fff;
+}
+
+/* Ответы */
+.replies {
+  margin-top: 10px;
+  padding-left: 20px;
+  border-left: 2px solid #555;
+}
+
+.reply-item {
+  margin-top: 10px;
+  background-color: #f1f1f1;
+  padding: 10px;
+  border-radius: 6px;
+  animation: fadeIn 0.5s ease-in;
+}
+
+body.dark-theme .reply-item {
+  background-color: #1a1a1a;
+}
+
+/* Анимация появления */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

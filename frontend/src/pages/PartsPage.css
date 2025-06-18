@@ -1,0 +1,194 @@
+/* PartsPage.css */
+
+/* Общий контейнер страницы (поддерживает темную и светлую тему) */
+.parts-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background: var(--bg-color);
+  color: var(--text-color);
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* Заголовок страницы подбора деталей */
+.parts-page h2 {
+  margin-bottom: 1.5rem;
+}
+
+/* Селекторы фильтров и сортировки */
+.parts-page .form-select {
+  border-radius: 10px; /* скругленные углы */
+  padding: 0.5rem 1rem;
+  background: var(--card-bg);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Стиль фокуса для селекторов */
+.parts-page .form-select:focus {
+  outline: none;
+  border-color: #ff6b6b;
+  box-shadow: 0 0 0 0.2rem rgba(255, 107, 107, 0.25);
+}
+
+/* Карточка детали */
+.parts-page .card {
+  background: var(--card-bg);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Состояние карточки при наведении */
+.parts-page .card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Изображение детали в карточке */
+.parts-page .card img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  /* Делаем высоту изображения адаптивной */
+  max-height: 200px;
+}
+
+/* Контейнер содержимого карточки */
+.parts-page .card .card-body {
+  padding: 1rem;
+}
+
+/* Название детали */
+.parts-page .card .card-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+/* Цена или описание детали */
+.parts-page .card .card-text {
+  font-size: 1rem;
+}
+
+/* Медиа-запросы для адаптивности */
+@media (max-width: 768px) {
+  .parts-page {
+    padding: 15px;
+  }
+  /* На планшетах уменьшаем высоту изображений карточек */
+  .parts-page .card img {
+    max-height: 150px;
+  }
+  /* Отступы между фильтрами, когда они складываются в столбик */
+  .parts-page form .col:not(:last-child) {
+    margin-bottom: 0.75rem;
+  }
+}
+
+@media (max-width: 576px) {
+  /* На мобильных фильтры располагаются в столбик по всей ширине */
+  .parts-page form .col {
+    width: 100%;
+  }
+  /* Уменьшаем высоту изображений карточек на мобильных */
+  .parts-page .card img {
+    max-height: 120px;
+  }
+}
+
+/* Контейнер пагинации */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;             /* Чтобы номера страниц переносились на новую строку при узком экране */
+  gap: 8px;                    /* Расстояние между элементами пагинации */
+  margin: 20px 0;
+}
+
+/* Стили для кнопок номеров страниц и кнопок навигации */
+.pagination .page-number,
+.pagination .page-nav {
+  padding: 6px 12px;
+  font: inherit;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+/* Актуальная страница – выделение */
+.pagination .page-number.active {
+  background-color: #007bff;   /* Например, синий фон для текущей страницы (можно заменить под стиль проекта) */
+  color: #fff;
+  border-color: #007bff;
+  font-weight: bold;
+}
+
+/* Отключенные кнопки (prev/next на границах) */
+.pagination .page-nav:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+/* Наведение курсора на кнопки (эффект hover) */
+.pagination .page-number:hover:not(.active),
+.pagination .page-nav:hover:not(:disabled) {
+  background-color: #f0f0f0;
+}
+
+/* Адаптивность: на маленьких экранах уменьшим отступы и размер шрифта, чтобы номера помещались */
+@media (max-width: 600px) {
+  .pagination .page-number,
+  .pagination .page-nav {
+    padding: 4px 8px;
+    font-size: 0.9em;
+  }
+}
+
+body.dark-theme .pagination .page-number,
+body.dark-theme .pagination .page-nav {
+  background-color: #1f1f1f;
+  color: #fff;
+  border: 1px solid #444;
+  border-radius: 6px; /* ✅ закругление */
+  padding: 8px 14px;
+  margin: 0 4px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  transform: scale(1);
+  cursor: pointer;
+}
+
+body.dark-theme .pagination .page-number:hover,
+body.dark-theme .pagination .page-nav:hover {
+  background-color: #2a2a2a;
+  transform: scale(1.08); /* ✅ плавный scale при hover */
+  color: #fff;
+}
+
+body.dark-theme .pagination .page-number.active {
+  background-color: #ff6b6b;
+  border-color: #ff6b6b;
+  color: #fff;
+  transform: scale(1.1); /* эффект выделения */
+}
+
+body.dark-theme .pagination .page-number.active:hover {
+  background-color: #e55b5b;
+  color: #fff;
+}
+
+body.dark-theme .pagination .page-nav:disabled {
+  background-color: #2c2c2c;
+  color: #777;
+  cursor: not-allowed;
+  transform: scale(1); /* не увеличивается */
+}

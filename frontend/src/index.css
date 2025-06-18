@@ -1,0 +1,391 @@
+/* ================== Глобальные стили ================== */
+/* src/index.css */
+:root {
+  /* Light theme */
+  --bg-color: #ffffff;
+  --text-color: #2c3e50;
+  --card-bg: #f8f9fa;
+  --border-color: #dee2e6;
+  
+  /* Dark theme */
+  --bg-color-dark: #1a1a1a;
+  --text-color-dark: #f8f9fa;
+  --card-bg-dark: #2d2d2d;
+  --border-color-dark: #3d3d3d;
+}
+
+body {
+  background: var(--bg-color);
+  color: var(--text-color);
+  transition: all 0.3s ease;
+}
+
+body.dark-theme {
+  --bg-color: var(--bg-color-dark);
+  --text-color: var(--text-color-dark);
+  --card-bg: var(--card-bg-dark);
+  --border-color: var(--border-color-dark);
+}
+
+/* Анимация шестеренки */
+.gear-icon {
+  fill: currentColor;
+  transition: transform 0.3s ease;
+}
+
+.gear-icon.spin {
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Кастомные тултипы */
+[data-tooltip] {
+  position: relative;
+  cursor: help;
+}
+
+[data-tooltip]::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 120%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0,0,0,0.8);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+}
+
+[data-tooltip]:hover::after {
+  opacity: 1;
+}
+
+/* Прелоадер */
+.preloader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.car-loader {
+  width: 100px;
+  animation: drive 2s ease-in-out infinite;
+}
+
+@keyframes drive {
+  0%, 100% { transform: translateX(-100%); }
+  50% { transform: translateX(100%); }
+}
+
+/* ================== Основной контейнер ================== */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* ================== Шапка (Header) ================== */
+.navbar-dark {
+  background: #2c3e50 !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand {
+  font-weight: 700;
+  font-size: 1.5rem;
+  letter-spacing: 1px;
+}
+
+.nav-link {
+  transition: all 0.3s !important;
+}
+
+.nav-link:hover {
+  color: #ff6b6b !important;
+}
+
+/* ================== Карточки ================== */
+.custom-card {
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s;
+  overflow: hidden;
+}
+
+.custom-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+}
+
+.card-img-top {
+  border-radius: 15px 15px 0 0;
+  height: 200px;
+  object-fit: cover;
+}
+
+/* ================== Кнопки ================== */
+.btn-custom {
+  background: #ff6b6b;
+  color: white !important;
+  border: none;
+  border-radius: 25px;
+  padding: 10px 25px;
+  transition: all 0.3s;
+}
+
+.btn-custom:hover {
+  background: #ff5252;
+  transform: translateY(-2px);
+}
+
+.btn-outline-custom {
+  border: 2px solid #ff6b6b;
+  color: #ff6b6b;
+  border-radius: 25px;
+  padding: 8px 20px;
+}
+
+.btn-outline-custom:hover {
+  background: #ff6b6b;
+  color: white !important;
+}
+
+/* ================== Формы ================== */
+.auth-card {
+  border-radius: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.form-control {
+  border-radius: 10px;
+  padding: 12px 15px;
+}
+
+.form-control:focus {
+  border-color: #ff6b6b;
+  box-shadow: 0 0 0 0.25rem rgba(255, 107, 107, 0.25);
+}
+
+/* ================== Ссылки ================== */
+.link-custom {
+  color: #ff6b6b;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+.link-custom:hover {
+  color: #ff5252;
+  text-decoration: underline;
+}
+
+/* ================== Анимации ================== */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-out;
+}
+
+/* ================== Медиа-запросы ================== */
+@media (max-width: 768px) {
+  .navbar-collapse {
+    margin-top: 15px;
+  }
+  
+  .btn-custom {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .container {
+    padding: 15px;
+  }
+
+  .card-img-top {
+    height: 150px;
+  }
+}
+
+@media (max-width: 576px) {
+  h1 {
+    font-size: 1.8rem;
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  .form-control {
+    padding: 10px 12px;
+  }
+}
+
+/* ================== Вспомогательные классы ================== */
+.text-muted {
+  color: #6c757d !important;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.mb-4 {
+  margin-bottom: 1.5rem !important;
+}
+
+.mt-5 {
+  margin-top: 3rem !important;
+}
+
+.shadow-sm {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05) !important;
+}
+
+/* Стили для футера */
+.footer {
+  border-top: 2px solid var(--border-color);
+  transition: all 0.3s ease;
+}
+
+.social-link {
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.social-link:hover {
+  transform: translateY(-3px);
+  opacity: 0.8;
+}
+
+.list-unstyled li {
+  transition: transform 0.3s ease;
+}
+
+.list-unstyled li:hover {
+  transform: translateX(5px);
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .footer .col-md-4 {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  .footer .d-flex {
+    justify-content: center;
+  }
+}
+
+/* Стили для видео-баннера */
+.video-hero {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.video-background {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+  object-fit: cover;
+}
+
+.video-overlay {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(to right, rgba(0,0,0,0.8), rgba(0,0,0,0.4));
+}
+
+.hero-title {
+  font-size: 3.5rem;
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+  color: white;
+}
+
+.hero-subtitle {
+  font-size: 1.5rem;
+  color: #fff;
+  margin-bottom: 2rem;
+}
+
+.hero-cta {
+  transition: all 0.3s ease;
+  padding: 1rem 2.5rem;
+  border-radius: 30px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.hero-cta:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(255,107,107,0.4);
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .video-hero {
+    height: 70vh;
+  }
+  
+  .hero-title {
+    font-size: 2.5rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .hero-title {
+    font-size: 2rem;
+  }
+  
+  .video-hero {
+    height: 60vh;
+  }
+}
+
+.app-wrapper {
+  min-height: 100vh;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Фикс для карточек и контейнеров */
+.card,
+.container,
+.parts-page,
+.main-page,
+.profile-page,
+.forum-page,
+.news-page {
+  background-color: transparent !important;
+  color: inherit !important;
+}

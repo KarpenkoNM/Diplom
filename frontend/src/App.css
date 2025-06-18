@@ -1,0 +1,26 @@
+/* Глобальные стили */
+body {
+  background-color: #f8f9fa;
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Переопределение Bootstrap */
+.bg-dark {
+  background-color: #2c3e50 !important;
+}
+
+.btn-primary {
+  background-color: #ff6b6b !important;
+  border-color: #ff6b6b !important;
+}
+
+.btn-outline-light:hover {
+  background-color: #ff6b6b !important;
+  border-color: #ff6b6b !important;
+}
+
+/* Стили для основного контента (можно добавить позже) */
+.container {
+  padding: 2rem 0;
+}

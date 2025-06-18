@@ -1,0 +1,38 @@
+/* src/pages/ProfilePage.css */
+.profile-page {
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+.profile-avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #ccc;
+}
+
+.nav-pills .nav-link {
+  color: var(--bs-body-color);
+  transition: all 0.3s ease;
+}
+
+.nav-pills .nav-link.active {
+  background-color: #ff6b6b !important;
+  color: #fff !important;
+}
+
+.card-body {
+  background-color: var(--bs-card-bg);
+  color: var(--bs-body-color);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.square-avatar {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}

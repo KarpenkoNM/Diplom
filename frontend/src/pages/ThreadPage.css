@@ -1,0 +1,100 @@
+/* src/pages/ThreadPage.css */
+
+.thread-page {
+  animation: fadeIn 0.5s ease-in;
+}
+
+.thread-card {
+  background-color: var(--bs-card-bg);
+  color: var(--bs-body-color);
+  border-radius: 12px;
+  border: 1px solid var(--bs-border-color);
+  padding: 1rem;
+}
+
+.thread-title {
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+.thread-content {
+  font-size: 1.1rem;
+  margin-top: 0.5rem;
+}
+
+.thread-actions, .comment-actions, .reply-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.icon-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 1.1rem;
+  padding: 0.2rem 0.5rem;
+  border: none;
+  background: transparent;
+  color: var(--bs-body-color);
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.icon-btn:hover {
+  transform: scale(1.2);
+  color: #ff6b6b; /* Анимированный красный акцент */
+}
+
+.comment-item {
+  background-color: var(--bs-secondary-bg);
+  color: var(--bs-body-color);
+  border-radius: 8px;
+  margin-bottom: 0.8rem;
+  padding: 10px;
+  animation: appear 0.4s ease forwards;
+}
+
+.reply-item {
+  background-color: rgba(255, 255, 255, 0.05);
+  color: var(--bs-body-color);
+  border-radius: 6px;
+  margin-top: 0.5rem;
+  margin-left: 20px;
+  padding: 8px;
+  animation: appear 0.4s ease forwards;
+}
+
+.reply-section {
+  margin-top: 5px;
+}
+
+.reply-button {
+  transition: background-color 0.3s;
+}
+
+.reply-button:hover {
+  background-color: #ddeeff;
+}
+
+.reply-form {
+  animation: appear 0.3s ease forwards;
+  margin-top: 5px;
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
